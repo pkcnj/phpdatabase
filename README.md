@@ -1,2 +1,2 @@
 # phpdatabase
-Database search powered by PHP, JavaScript, and MySQL
+Database search powered by PHP and MySQL.
