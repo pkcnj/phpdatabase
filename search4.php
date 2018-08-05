@@ -9,7 +9,7 @@
 
 <?php
 echo "<table style='border: solid 1px black;'>";
- echo "<tr><th>SearchString</th><th>Country</th><th>Language</th><th>Category</th><th>Visits</th></tr>";
+ echo "<tr><th>Borough</th><th>Network</th><th>Branch</th><th>Total Circulation</th></tr>";
 
 
 class TableRows extends RecursiveIteratorIterator {
@@ -31,7 +31,7 @@ class TableRows extends RecursiveIteratorIterator {
 }
 
 
-$db->pdo = new PDO('mysql:host=localhost;dbname=giexample;charset=utf8', 'root', '');
+$db->pdo = new PDO('mysql:host=localhost;dbname=nyplbranches;charset=utf8', 'root', '');
 $db->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $db->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
@@ -43,21 +43,19 @@ $db->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
       $searchquery2 = $_GET["searchquery2"];
       $searchquery3 = $_GET["searchquery3"];
       $searchquery4 = $_GET["searchquery4"];
-      $searchquery5 = $_GET["searchquery5"];
+      
      
-      $stmt = $db->prepare("SELECT * FROM `gi2015_v2` WHERE `searchstring` LIKE :searchquery
-        AND `country` LIKE :country
-        AND `searchlanguage` LIKE :lang
-        AND `searchtype` LIKE :category
-        AND `Visits` >= :visits
+      $stmt = $db->prepare("SELECT * FROM `nyplcirc` WHERE `Boro/Central Library` LIKE :searchquery
+        AND `Network` LIKE :network
+        AND `Branch` LIKE :branch
+        AND `CIRCULATION` >= :circ
         
 
       ");
       $stmt->execute(array(':searchquery' => "%" . $searchquery . "%",
-':country' => "%" . $searchquery2 . "%",
-':lang' => "%" . $searchquery3 . "%",
-':category' => "%" . $searchquery4 . "%",
-':visits' => "%" . $searchquery5 . "%",
+':network' => "%" . $searchquery2 . "%",
+':branch' => "%" . $searchquery3 . "%",
+':circ' => "%" . $searchquery4 . "%",
 
 
     ));
