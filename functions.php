@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Used to store different static data.
+ * Static data.
  *
  * @var array
  */
 $config = [
-    'name' => 'Trending Customer Search Terms',
+    'name' => 'New York Public Library Branch Services from 7-2010 to 6-2011',
 ];
 
 /**
- * Displays site name. Uses $config global.
+ * Site name.
  */
 function siteName()
 {
@@ -19,27 +19,23 @@ function siteName()
 }
 
 /**
- * Displays page title. It takes the data from
- * URL, it replaces the hyphens with spaces and
- * it capitalizes the words.
+ * Page title. 
  */
 function pageTitle()
 {
-    $page = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : 'home';
+    $page = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : 'index4';
 
     echo ucwords(str_replace('-', ' ', $page));
 }
 
 /**
- * Displays page content. It takes the data from
- * the static pages inside the pages/ directory.
- * When not found, display the 404 error page.
+ * Page content. 
  */
 function pageContent()
 {
-    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+    $page = isset($_GET['page']) ? $_GET['page'] : 'index4';
 
-    $path = getcwd().'/pages/'.$page.'.php';
+    $path = getcwd().$page.'.php';
 
     if (file_exists($path)) {
         include $path;
