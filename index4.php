@@ -15,15 +15,14 @@
     <header>
         <h2><?php siteName(); ?></h2>
         <nav class="menu">
-            <a href="/" title="Home">Home</a> |
-            <a href="/?page=contact-us">Video Searches</a>
+        
         </nav>
     </header>
 
     <article>
-        <h3><?php pageTitle(); ?></h3>
-        <?php pageContent();
-$db = new PDO('mysql:host=localhost;dbname=giexample;charset=utf8', 'root', '');
+        
+        <?php
+$db = new PDO('mysql:host=localhost;dbname=nyplbranches;charset=utf8', 'root', '');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 // Create connection
@@ -36,11 +35,11 @@ $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 </div>
 
 <form action="index4.php" id="form" method="GET">
-<input type="text" id="searchquery" name="searchquery" placeholder="SearchString"></input><br/>
-<input type="text" id="searchquery2" name="searchquery2" placeholder="Country"></input><br/>
-<input type="text" id="searchquery3" name="searchquery3" placeholder="Language"></input><br/>
-<input type="text" id="searchquery4" name="searchquery4" placeholder="Category"></input><br/>
-<input type="text" id="searchquery5" name="searchquery5" placeholder="Visits"></input><br/>
+<input type="text" id="searchquery" name="searchquery" placeholder="Borough"></input><br/>
+<input type="text" id="searchquery2" name="searchquery2" placeholder="Network"></input><br/>
+<input type="text" id="searchquery3" name="searchquery3" placeholder="Branch"></input><br/>
+<input type="text" id="searchquery4" name="searchquery4" placeholder="Circulation"></input><br/>
+
 
 
 <input type="submit" name="submit" value="Submit"></input>
